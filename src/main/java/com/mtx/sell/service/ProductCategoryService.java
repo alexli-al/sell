@@ -2,13 +2,15 @@ package com.mtx.sell.service;
 
 import com.mtx.sell.model.ProductCategory;
 
+import java.util.List;
+
 public interface ProductCategoryService {
 
-    public void save(ProductCategory productCategory);
+    public ProductCategory save(ProductCategory productCategory);
 
-    public void findAll();
+    public List<ProductCategory> findAll();
 
-    public void update(ProductCategory productCategory);
+    public ProductCategory update(ProductCategory productCategory);
 
 
 }

@@ -6,10 +6,13 @@ spring:
     username: root
     password: root
     driver-class-name: com.mysql.jdbc.Driver
+  thymeleaf:
+    prefix: classpath:/templates/
 
 jpa:
   database: MYSQL
   hibernate:
     ddl-auto: update
   show-sql: true
+
 
