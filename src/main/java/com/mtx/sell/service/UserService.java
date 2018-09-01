@@ -9,4 +9,6 @@ public interface UserService {
     public List<UserEntity> findByUsername(String username);
 
     public Long save(UserEntity user);
+
+    public List<UserEntity> findAll();
 }

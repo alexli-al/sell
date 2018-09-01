@@ -1,0 +1,4 @@
+1.  字段添加@CreateDate，@LastModifiedDate,基类添加主解@EntityListeners(AuditingEntityListener.class) ,启动类添加@EnableJpaAuditing
+    https://www.jishux.com/p/4e720f2628cbf1f1
+
+   https://www.thoughts-on-java.org/persist-localdate-localdatetime-jpa/

@@ -6,6 +6,7 @@ import com.mtx.sell.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -22,5 +23,18 @@ public class UserServiceImpl implements UserService {
     @Override
     public Long save(UserEntity user) {
         return userRepo.save(user).getId();
+    }
+
+    @Override
+    public List<UserEntity> findAll() {
+        List<UserEntity> newUserList = new ArrayList<>();
+        List<UserEntity> userList = userRepo.findAll();
+        for(UserEntity user : userList){
+            user.setCreatedDate(null);
+            user.setLastModifiedDate(null);
+            newUserList.add(user);
+        }
+        return newUserList;
+
     }
 }

@@ -3,7 +3,7 @@ package com.mtx.sell.model;
 import javax.persistence.Entity;
 
 @Entity
-public class UserEntity  extends  EntityBase{
+public class UserEntity  extends BaseEntity {
 
     private String username;
 

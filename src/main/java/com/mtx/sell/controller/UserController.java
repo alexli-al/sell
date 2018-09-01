@@ -41,4 +41,11 @@ public class UserController {
     public Long add(@RequestBody UserEntity user){
         return userService.save(user);
     }
+
+
+    @ApiOperation(value = "获取用户列表", nickname = "获取用户列表")
+    @GetMapping(value = "/findAll")
+    public List<UserEntity> findAll(){
+        return userService.findAll();
+    }
 }

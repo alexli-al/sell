@@ -1,29 +1,35 @@
 package com.mtx.sell.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.mtx.sell.config.LocalDateTimeConvert;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @MappedSuperclass
-public class EntityBase {
+@EntityListeners(AuditingEntityListener.class)
+public class BaseEntity {
 
     @Id
     @GeneratedValue
     private Long id;
 
     @CreatedDate
+    @Convert(converter = LocalDateTimeConvert.class)
     private LocalDateTime createdDate;
 
     @LastModifiedDate
-    private LocalDateTime lastModifiedDate;
+    @Convert(converter = LocalDateTimeConvert.class)
+    private LocalDateTime lastModifiedDate ;
 
-    public EntityBase(){}
+    public BaseEntity(){}
 
-    public EntityBase(Long id, LocalDateTime createdDate, LocalDateTime lastModifiedDate) {
+    public BaseEntity(Long id, LocalDateTime createdDate, LocalDateTime lastModifiedDate) {
         this.id = id;
         this.createdDate = createdDate;
         this.lastModifiedDate = lastModifiedDate;
@@ -37,14 +43,16 @@ public class EntityBase {
         this.id = id;
     }
 
+    @DateTimeFormat(pattern="yyyy-MM-ddHH:mm:ss")
     public LocalDateTime getCreatedDate() {
-        return createdDate;
+        return  createdDate;
     }
 
     public void setCreatedDate(LocalDateTime createdDate) {
         this.createdDate = createdDate;
     }
 
+    @DateTimeFormat(pattern="yyyy-MM-ddHH:mm:ss")
     public LocalDateTime getLastModifiedDate() {
         return lastModifiedDate;
     }
